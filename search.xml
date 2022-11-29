@@ -79,6 +79,31 @@
     
     
     <entry>
+      <title>大一写了啥</title>
+      <link href="/2022/11/28/%E5%A4%A7%E4%B8%80%E5%86%99%E4%BA%86%E5%95%A5/"/>
+      <url>/2022/11/28/%E5%A4%A7%E4%B8%80%E5%86%99%E4%BA%86%E5%95%A5/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>这篇文章记录一下大一写的东西（）<br>话不多说直接上视频吧（懒得写文字了）</p></blockquote><iframe height=498 width=610 src="//player.bilibili.com/player.html?aid=685367081&bvid=BV1nU4y1Q7in&cid=757148283&page=1"></iframe><blockquote><p>搬运简介：<br>h5+css ：（1）仿写北京大学官网首页 （2）设计学习强国pc端网页<br>C语言 ：经典图书管理系统（找不到了）<br>c++ ：小型书店进销存管理系统（这不就是图书管理系统吗）<br>小学期 ：（1）基于huffman编码的压缩程序（2）表达式求值（栈）<br>（3）Floyd求多源最短路径</p></blockquote><hr><p><strong>挖个坑：有时间补一下小学期那几个算法的笔记吧</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Other </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> record </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2022/11/27/hello-world/"/>
       <url>/2022/11/27/hello-world/</url>
