@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>数据库系统概论复习 | SheepFly's blog</title><meta name="author" content="SheepFly"><meta name="copyright" content="SheepFly"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="先上一张思维导图     以下题目来自课堂复习  第一章 绪论1 简答题1.1 简述数据库系统的组成和特点组成：数据库系统（DBS）一般由数据库（DB）、数据库管理系统（DBMS）及其应用开发工具、应用程序和数据库管理员（DBA）构成，是储存、管理、处理和维护数据的系统。特点：  数据结构化  整体数据的结构化，这是数据库的主要特征之一，也是数据库系统和文件系统的本质区别。   数据的共享性高、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统概论复习">
+<meta property="og:url" content="http://example.com/2022/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="SheepFly&#39;s blog">
+<meta property="og:description" content="先上一张思维导图     以下题目来自课堂复习  第一章 绪论1 简答题1.1 简述数据库系统的组成和特点组成：数据库系统（DBS）一般由数据库（DB）、数据库管理系统（DBMS）及其应用开发工具、应用程序和数据库管理员（DBA）构成，是储存、管理、处理和维护数据的系统。特点：  数据结构化  整体数据的结构化，这是数据库的主要特征之一，也是数据库系统和文件系统的本质区别。   数据的共享性高、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/28/zUowRS.png">
+<meta property="article:published_time" content="2022-11-30T02:05:33.000Z">
+<meta property="article:modified_time" content="2022-11-30T13:19:10.512Z">
+<meta property="article:author" content="SheepFly">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/11/28/zUowRS.png"><link rel="shortcut icon" href="https://s1.ax1x.com/2022/11/28/zURH9H.jpg"><link rel="canonical" href="http://example.com/2022/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据库系统概论复习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-30 21:19:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.ax1x.com/2022/11/28/zURH9H.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Blog</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/11/28/zUowRS.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">SheepFly's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Blog</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据库系统概论复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-30T02:05:33.000Z" title="发表于 2022-11-30 10:05:33">2022-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-30T13:19:10.512Z" title="更新于 2022-11-30 21:19:10">2022-11-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据库系统概论复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>先上一张思维导图</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2022/11/29/zdbuTJ.png" alt=""></p>
+<hr>
+<blockquote>
+<p>以下题目来自课堂复习</p>
+</blockquote>
+<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><h2 id="1-简答题"><a href="#1-简答题" class="headerlink" title="1 简答题"></a>1 简答题</h2><h3 id="1-1-简述数据库系统的组成和特点"><a href="#1-1-简述数据库系统的组成和特点" class="headerlink" title="1.1 简述数据库系统的组成和特点"></a>1.1 简述数据库系统的组成和特点</h3><p><strong>组成：</strong><br>数据库系统（DBS）一般由数据库（DB）、数据库管理系统（DBMS）及其应用开发工具、应用程序和数据库管理员（DBA）构成，是储存、管理、处理和维护数据的系统。<br><strong>特点：</strong></p>
+<ol>
+<li><p>数据结构化</p>
+<ul>
+<li>整体数据的结构化，这是数据库的主要特征之一，也是数据库系统和文件系统的本质区别。<br><img src="https://s1.ax1x.com/2022/11/29/zdHXSP.jpg" alt=""></li>
+</ul>
+</li>
+<li><p>数据的共享性高、冗余度低且易扩充</p>
+</li>
+<li><p>数据独立性高</p>
+<ul>
+<li>数据独立性<ul>
+<li>物理独立性</li>
+<li>逻辑独立性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据由数据库管理系统统一管理和控制</p>
+</li>
+</ol>
+<h3 id="1-2-简述数据库独立性的原理和作用"><a href="#1-2-简述数据库独立性的原理和作用" class="headerlink" title="1.2 简述数据库独立性的原理和作用"></a>1.2 简述数据库独立性的原理和作用</h3><p>数据库系统通常采用三级模式结构，是数据库系统内部的系统结构<br><img src="https://img-blog.csdnimg.cn/2020070809585186.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njg4MDU1Ng==,size_16,color_FFFFFF,t_70#pic_center" alt=""></p>
+<ol>
+<li><p><strong>外模式</strong><br>又称子模式或用户模式。外模式是某个数据视图，独立于存储模式和存储设备；一个DB可以有多个外模式，外模式是模式的子集。<br>外模式的用途：保证数据库安全性的一个有力措施；每个用户只能看见和访问所对应的外模式中的数据。</p>
+</li>
+<li><p><strong>模式</strong><br>又称逻辑模式，模式只涉及到型的描述，不涉及具体的值，反映的是数据的结构及其联系；模式起到了承上启下的作用；一个数据库只有一个模式。</p>
+</li>
+<li><p><strong>内模式</strong><br>又称存储模式。数据的物理结构和存储方式的描述，即DB中数据的内部表示方式。<br>一个数据库只有一个内模式；独立于具体的存储设备</p>
+</li>
+</ol>
+<blockquote>
+<p>当数据库的存储结构改变了，数据库管理员可<strong>修改内模式/模式映像，</strong> 使模式保持不变。保证了数据的<strong>物理独立性</strong> 。</p>
+<p>对于同一个模式可以有任意多个外模式，对于每一个外模式，数据库系统都有一个外模式映像。当模式改变时，由数据库管理员对<strong>各个外模式/模式的映像作相应的改变</strong>，可以使外模式保持不变。保证了数据与程序的<strong>数据独立性</strong>。</p>
+</blockquote>
+<h3 id="1-3-简述文件系统和数据库系统在处理数据中的区别和联系"><a href="#1-3-简述文件系统和数据库系统在处理数据中的区别和联系" class="headerlink" title="1.3 简述文件系统和数据库系统在处理数据中的区别和联系"></a>1.3 简述文件系统和数据库系统在处理数据中的区别和联系</h3><ol>
+<li><strong>区别：</strong></li>
+</ol>
+<ul>
+<li><p>文件系统由操作系统中的存取方式对数据进行管理，数据库中由DBMS对数据进行管理和控制；</p>
+</li>
+<li><p>文件系统中数据与应用程序有联系，而数据库系统中数据和应用程序分离；</p>
+</li>
+<li><p>文件系统是以文件为单位的共享，这就可能会造成数据间不相融与不一致性，而数据库系统的共享是以数据项为单位的共享，共享性更高。</p>
+</li>
+</ul>
+<ol>
+<li><strong>联系：</strong></li>
+</ol>
+<ul>
+<li><p>均为数据组织的管理技术；</p>
+</li>
+<li><p>均由数据管理软件管理数据，程序与数据之间用存取方法进行转换；</p>
+</li>
+<li><p>数据库系统是在文件系统的基础上发展而来的。</p>
+</li>
+</ul>
+<h3 id="1-4-简述数据库相关的三个数据模型的联系与区别"><a href="#1-4-简述数据库相关的三个数据模型的联系与区别" class="headerlink" title="1.4 简述数据库相关的三个数据模型的联系与区别"></a>1.4 简述数据库相关的三个数据模型的联系与区别</h3><ol>
+<li><strong>联系：</strong></li>
+</ol>
+<ul>
+<li>都是主要的数据模型。数据模型分两类，一类是概念模型，一类是逻辑模型和物理模型。</li>
+<li>都是数据库系统的核心和基础。</li>
+</ul>
+<ol>
+<li><strong>区别：</strong></li>
+</ol>
+<ul>
+<li>概念模型是按照用户的观点来对数据和信息进行建模，主要用于数据库设计。</li>
+<li>逻辑模型是按照计算机系统的观点对数据进行数据建模，主要用于数据库管理系统的实现。</li>
+<li>物理模型是对数据最底层的抽象，它描述数据在系统内部的表达方式和存取方法，或在磁盘或磁盘带上的储存方式和存取方法，是面向计算机的。</li>
+</ul>
+<h3 id="1-5-与网状模型和层次模型相比，关系模型的优点是什么"><a href="#1-5-与网状模型和层次模型相比，关系模型的优点是什么" class="headerlink" title="1.5 与网状模型和层次模型相比，关系模型的优点是什么"></a>1.5 与网状模型和层次模型相比，关系模型的优点是什么</h3><ul>
+<li>关系模型与格式化模型（网状模型、层次模型）不同，它是建立在严格的数学概念（集合）的基础上的。</li>
+<li>数据结构简单、清晰，用户易懂易用。</li>
+<li>具有更好的数据独立性、更好的安全保密性。</li>
+</ul>
+<h1 id="第二章-关系数据库"><a href="#第二章-关系数据库" class="headerlink" title="第二章 关系数据库"></a>第二章 关系数据库</h1><h2 id="2-1-关系模型的三个组成部分"><a href="#2-1-关系模型的三个组成部分" class="headerlink" title="2.1 关系模型的三个组成部分"></a>2.1 关系模型的三个组成部分</h2><ol>
+<li><strong>关系数据结构</strong><br>主要描述数据的类型、内容、性质以及数据间的联系等。</li>
+<li><strong>关系操作集合</strong><br>主要描述在相应的数据结构上的操作类型和操作方式。它是操作算符的集合，包括若干操作和推理准则，用以对目标类型的有效实例所组成的数据库进行操作。</li>
+<li><strong>关系完整性约束</strong><br>数据约束主要描述数据结构内数据间的语法、词义联系、他们之间的制约和依存关系，以及数据动态变化的规则，以保证数据的正确、有效和相容。它是完整性规则的集合，用以限定符合数据模型的数据库状态，以及状态的变化。</li>
+</ol>
+<ul>
+<li>静态约束：数据库中数据的语法、语义限制与数据之间的逻辑约束称为静态约束。</li>
+<li>动态约束：数据库中的数据变化应遵守的规则称为数据动态约束</li>
+</ul>
+<h2 id="2-2-关系模式和关系的区别"><a href="#2-2-关系模式和关系的区别" class="headerlink" title="2.2 关系模式和关系的区别"></a>2.2 关系模式和关系的区别</h2><ol>
+<li><p><strong>关系：</strong> 关系模型的数据结构，D1 × D2 × ··· × Dn 的子集叫做在域D1，D2，···，Dn 上的关系，表示为 R(D1，D2，···，Dn )，其中R就是关系名，n就是目或度。关系对应一张二维表，关系中的每个元素称为元组，由于元组数据会时常修改，所以关系呈现出动态的。</p>
+<blockquote>
+<ul>
+<li>元组：关系中每个元素叫作一个n元组，简称元组</li>
+<li>属性：表中的一列即为一个属性，给每个属性起一个名称即为属性名，表中任意的属性名不能相同</li>
+<li>码：属性/属性组 组成【候选码：唯一标识符】【主码：从候选码中选定】【全码：关系模式中的所有属性组是这个关系模式的候选码】</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>关系模式：</strong> 对关系的描述。关系模式是静态的。</p>
+<blockquote>
+<p>例如：教师（教师号，姓名，性别，年龄，职称，所在系）</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="2-3-试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可以为空值？"><a href="#2-3-试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可以为空值？" class="headerlink" title="2.3 试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可以为空值？"></a>2.3 试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可以为空值？</h2><ol>
+<li>关系模型的完整性规则是对关系的某种约束条件。关系模型中有三类完整性约束，分别为实体完整性规则、参照完整性规则和用户定义的完整性规则。</li>
+</ol>
+<ul>
+<li>实体完整性规则：若一个或一组属性A是基本关系R中的主属性，则属性A不能为空值。</li>
+<li>参照完整性规则：若一个或一组属性F是基本关系R的外码，Ks是基本关系S的主码，且F与Ks相对应，则R中任一元组在F上的值必须：F为空值或S中的某个元组的Ks值。 </li>
+<li>用户定义的完整性规则：用户自定义的完整性就是针对某一具体数据的约束条件，它反映某一具体应用所涉及的数据必须满足的语义要求。 </li>
+</ul>
+<ol>
+<li>在参照完整性规则中，当外码和另一关系的主码相对应时，外码可为空值。</li>
+</ol>
+<h2 id="2-4-教材第二章习题部分第6题"><a href="#2-4-教材第二章习题部分第6题" class="headerlink" title="2.4 教材第二章习题部分第6题"></a>2.4 教材第二章习题部分第6题</h2><p>设有一个 SPJ 数据库，包括 S、P、J、SPJ4 个关系模式：</p>
+<blockquote>
+<p>S ( SNO, SNAME, STATUS, CITY );<br>P ( PNO, PNAME, COLOR, WEIGHT );<br>J ( JNO, JNAME, CITY );<br>SPJ ( SNO, PNO, JNO, QTY );</p>
+</blockquote>
+<ul>
+<li>供应商表 S 由供应商代码（SNO）、供应商姓名（SNAME）、供应商状态（STATUS）、供应商所在城市（CITY）组成。</li>
+<li>零件表 P 由零件代码（PNO）、零件名（PNAME）、颜色（COLOR）、重量（WEIGHT）组成。</li>
+<li>工程项目表 J 由工程项目代码（JNO）、工程项目名（JNAME）、工程项目所在城市（CITY）组成。</li>
+<li>供应情况表 SPJ 由供应商代码（SNO）、零件代码（PNO）、工程项目代码（JNO）、供应数量（QTY）组成，表示某供应商供应某种零件给某工程项目的数量为 QTY。</li>
+</ul>
+<p>今有若干数据如下：<br><img src="https://s1.ax1x.com/2022/11/30/zw7hTJ.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2022/11/30/zw7qOO.png" alt=""><br><img src="https://s1.ax1x.com/2022/11/30/zw7X0e.png" alt=""></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">SheepFly</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/">http://example.com/2022/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">SheepFly's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/11/28/zUowRS.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/11/28/%E5%A0%86%E6%8E%92%E5%BA%8F/"><img class="next-cover" src="https://www.leixue.com/uploads/2021/04/Low-Code-Development-Platform.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">堆排序</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s1.ax1x.com/2022/11/28/zURH9H.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">SheepFly</div><div class="author-info__description">江财大二学生 :-) 博客装修ing</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/475417731?spm_id_from=333.1007.0.0"><i class="fab fa-bilibili"></i><span>Contact Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:2570089541@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">第一章 绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%80%E7%AD%94%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">1 简答题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AE%80%E8%BF%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 简述数据库系统的组成和特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%AE%80%E8%BF%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%8B%AC%E7%AB%8B%E6%80%A7%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 简述数据库独立性的原理和作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%AE%80%E8%BF%B0%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%9C%A8%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E8%81%94%E7%B3%BB"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 简述文件系统和数据库系统在处理数据中的区别和联系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%AE%80%E8%BF%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%89%E4%B8%AA%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%81%94%E7%B3%BB%E4%B8%8E%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 简述数据库相关的三个数据模型的联系与区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E4%B8%8E%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E7%9B%B8%E6%AF%94%EF%BC%8C%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BC%98%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 与网状模型和层次模型相比，关系模型的优点是什么</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">第二章 关系数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%89%E4%B8%AA%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 关系模型的三个组成部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%85%B3%E7%B3%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 关系模式和关系的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E8%AF%95%E8%BF%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7%E8%A7%84%E5%88%99%E3%80%82%E5%9C%A8%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7%E4%B8%AD%EF%BC%8C%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E5%A4%96%E7%A0%81%E5%B1%9E%E6%80%A7%E7%9A%84%E5%80%BC%E5%8F%AF%E4%BB%A5%E4%B8%BA%E7%A9%BA%E5%80%BC%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 试述关系模型的完整性规则。在参照完整性中，什么情况下外码属性的值可以为空值？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E6%95%99%E6%9D%90%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%B9%A0%E9%A2%98%E9%83%A8%E5%88%86%E7%AC%AC6%E9%A2%98"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 教材第二章习题部分第6题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库系统概论复习"><img src="https://s1.ax1x.com/2022/11/28/zUowRS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库系统概论复习"/></a><div class="content"><a class="title" href="/2022/11/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库系统概论复习">数据库系统概论复习</a><time datetime="2022-11-30T02:05:33.000Z" title="发表于 2022-11-30 10:05:33">2022-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/28/%E5%A0%86%E6%8E%92%E5%BA%8F/" title="堆排序"><img src="https://www.leixue.com/uploads/2021/04/Low-Code-Development-Platform.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="堆排序"/></a><div class="content"><a class="title" href="/2022/11/28/%E5%A0%86%E6%8E%92%E5%BA%8F/" title="堆排序">堆排序</a><time datetime="2022-11-28T15:10:33.000Z" title="发表于 2022-11-28 23:10:33">2022-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/28/%5B%E4%BC%A0%E6%99%BA%5DB%E8%8E%B2%E5%AD%90%E7%9A%84%E6%9C%BA%E6%A2%B0%E5%8A%A8%E5%8A%9B%E5%AD%A6/" title="【传智】莲子的机械动力学"><img src="https://cdn.luogu.com.cn/upload/image_hosting/px92d6yd.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【传智】莲子的机械动力学"/></a><div class="content"><a class="title" href="/2022/11/28/%5B%E4%BC%A0%E6%99%BA%5DB%E8%8E%B2%E5%AD%90%E7%9A%84%E6%9C%BA%E6%A2%B0%E5%8A%A8%E5%8A%9B%E5%AD%A6/" title="【传智】莲子的机械动力学">【传智】莲子的机械动力学</a><time datetime="2022-11-28T09:10:33.000Z" title="发表于 2022-11-28 17:10:33">2022-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/28/Markdown-Learning/" title="Markdown_Learning"><img src="https://s1.ax1x.com/2022/11/28/zUowRS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Markdown_Learning"/></a><div class="content"><a class="title" href="/2022/11/28/Markdown-Learning/" title="Markdown_Learning">Markdown_Learning</a><time datetime="2022-11-28T01:56:33.000Z" title="发表于 2022-11-28 09:56:33">2022-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/28/%E5%A4%A7%E4%B8%80%E5%86%99%E4%BA%86%E5%95%A5/" title="大一写了啥"><img src="https://s1.ax1x.com/2022/11/28/zUowRS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大一写了啥"/></a><div class="content"><a class="title" href="/2022/11/28/%E5%A4%A7%E4%B8%80%E5%86%99%E4%BA%86%E5%95%A5/" title="大一写了啥">大一写了啥</a><time datetime="2022-11-28T01:56:33.000Z" title="发表于 2022-11-28 09:56:33">2022-11-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s1.ax1x.com/2022/11/28/zUowRS.png')"><div id="footer-wrap"><div class="copyright">&copy;2022 By SheepFly</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
