@@ -143,6 +143,8 @@
           
           <category> 数据结构 </category>
           
+          <category> 项目练习 </category>
+          
       </categories>
       
       
@@ -222,6 +224,8 @@
           
           <category> Java </category>
           
+          <category> 项目练习 </category>
+          
       </categories>
       
       
@@ -251,6 +255,8 @@
           
           <category> Java </category>
           
+          <category> 项目练习 </category>
+          
       </categories>
       
       
@@ -276,7 +282,9 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> java </category>
+          
+          <category> 项目练习 </category>
           
       </categories>
       
@@ -494,6 +502,56 @@
           
       </categories>
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ACWing寒假08 4653.数位排序</title>
+      <link href="/2022/01/03/%5BACWing%E5%AF%92%E5%81%8708%5D%E6%95%B0%E4%BD%8D%E6%8E%92%E5%BA%8F/"/>
+      <url>/2022/01/03/%5BACWing%E5%AF%92%E5%81%8708%5D%E6%95%B0%E4%BD%8D%E6%8E%92%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">难度：简单</span><br><span class="line">时/空限制：1s / 256MB</span><br><span class="line">来源：第十三届蓝桥杯省赛C++C组</span><br><span class="line">算法标签:</span><br><span class="line">排序 二分</span><br></pre></td></tr></table></figure><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小蓝对一个数的数位之和很感兴趣，今天他要按照数位之和给数排序。</p><p>当两个数各个数位之和不同时，将数位和较小的排在前面，当数位之和相等时，将数值小的排在前面。</p><p>例如，2022 排在 409 前面，因为 2022 的数位之和是 6，小于 409 的数位之和 13。</p><p>又如，6 排在 2022 前面，因为它们的数位之和相同，而 6 小于 2022。</p><p>给定正整数 n，m，请问对 1 到 n 采用这种方法排序时，排在第 m 个的元素是多少？</p><p><strong>输入格式</strong><br>输入第一行包含一个正整数 n。</p><p>第二行包含一个正整数 m。</p><p><strong>输出格式</strong><br>输出一行包含一个整数，表示答案。</p><p><strong>数据范围</strong><br>对于 30% 的评测用例，$1≤m≤n≤300$<br>对于 50% 的评测用例，$1≤m≤n≤1000$<br>对于所有评测用例，$1≤m≤n≤10^6$</p><p><strong>输入样例：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">13</span><br><span class="line">5</span><br></pre></td></tr></table></figure><br><strong>输出样例：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure><br><strong>样例解释</strong><br>$1$ 到 $13$ 的排序为：$1,10,2,11,3,12,4,13,5,6,7,8,9$</p><p>第 $5$ 个数为 $3$。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>数据范围1e6, 时间复杂度O(nlogn)可以解决，故可以直接用sort改写cmp方法。</p><p><strong>初次尝试：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum_a = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> sum_b = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> t1 = a, t2 = b;</span><br><span class="line">    <span class="keyword">while</span> (t1)&#123;</span><br><span class="line">        sum_a += t1 % <span class="number">10</span>;</span><br><span class="line">        t1 /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (t2)&#123;</span><br><span class="line">        sum_b += t2 % <span class="number">10</span>;</span><br><span class="line">        t2 /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sum_a != sum_b)</span><br><span class="line">        <span class="keyword">return</span> sum_a &lt; sum_b;</span><br><span class="line">    <span class="keyword">return</span> a &lt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">1000010</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        a[i] = i + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">sort</span>(a, a + n, cmp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, a[m - <span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>结果超时了，原因是将拆分数的循环动作放在了cmp函数里面，导致了很多重复的动作，可以在main函数中先预处理，将拆分和存储起来。</p><p><strong>第二次尝试（结构体储存）：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">&#125; a[<span class="number">1000010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.y != b.y) <span class="keyword">return</span> a.y &lt; b.y;</span><br><span class="line">    <span class="keyword">return</span> a.x &lt; b.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        a[i].x = i + <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> t = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(t)&#123;</span><br><span class="line">            a[i].y += t % <span class="number">10</span>;</span><br><span class="line">            t /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(a, a + n, cmp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, a[m - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ACWing寒假07 4644.求和</title>
+      <link href="/2022/01/02/%5BACWing%E5%AF%92%E5%81%8707%5D%E6%B1%82%E5%92%8C/"/>
+      <url>/2022/01/02/%5BACWing%E5%AF%92%E5%81%8707%5D%E6%B1%82%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">难度：简单</span><br><span class="line">时/空限制：1s / 256MB</span><br><span class="line">来源：第十三届蓝桥杯省赛C++A/C组 , 第十三届蓝桥杯省赛JAVAA组</span><br><span class="line">算法标签:</span><br><span class="line">推公式 前缀和</span><br></pre></td></tr></table></figure><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定 n 个整数 $a_1,a_2,⋅⋅⋅,a_n$，求它们两两相乘再相加的和，即</p><p>$S=a<em>1⋅a_2+a_1⋅a_3+⋅⋅⋅+a_1⋅a_n+a_2⋅a_3+⋅⋅⋅+a</em>{n−2}⋅a<em>{n−1}+a</em>{n−2}⋅a<em>n+a</em>{n−1}⋅a_n$</p><p><strong>输入格式</strong><br>输入的第一行包含一个整数 n。</p><p>第二行包含 n 个整数 a1,a2,⋅⋅⋅,an。</p><p><strong>输出格式</strong><br>输出一个整数 S，表示所求的和。</p><p>请使用合适的数据类型进行运算。</p><p><strong>数据范围</strong><br>对于 30% 的数据，$1≤n≤1000，1≤a_i≤100。$<br>对于所有评测用例，$1≤n≤200000，1≤a_i≤1000。$</p><p><strong>输入样例：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 3 6 9</span><br></pre></td></tr></table></figure><br><strong>输出样例：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">117</span><br></pre></td></tr></table></figure></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>数据范围为2e6，暴力两重循环O(n^2)肯定会超时,可对公式进一步解析：</p><p>$S=a<em>1⋅a_2+a_1⋅a_3+⋅⋅⋅+a_1⋅a_n+a_2⋅a_3+⋅⋅⋅+a</em>{n−2}⋅a<em>{n−1}+a</em>{n−2}⋅a<em>n+a</em>{n−1}⋅a<em>n$<br>等价于：<br>$S=a_1⋅(a_2+a_3+⋅⋅⋅+a_n)+⋅⋅⋅+a</em>{n−2}⋅(a<em>{n−1}+a_n)+a</em>{n−1}⋅a<em>n$<br><strong>对于和的部分可以用前缀和解决</strong>，例如：设前缀和数组为S，则 $a_1$ 后面的和则等于 $S[n] - S[1]$ (下标从1开始)；<br>故只需要初始化前缀和数组O(n), 再枚举 $a_1$ 至 $a</em>{n-1}$ O(n) 即可解决问题，时间复杂度：O(n)。</p><p><strong>注意</strong>：前缀和数组和答案需要<code>long long</code>类型</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">200010</span>];</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> preSum[<span class="number">200010</span>];<span class="comment">//前缀和</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        preSum[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//求前缀和</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        preSum[i] += preSum[i - <span class="number">1</span>];</span><br><span class="line">    <span class="comment">//求结果</span></span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        ans += (a[i] * (preSum[n] - preSum[i]));</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>已AC</p></blockquote><p><strong>进一步优化空间复杂度</strong>：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">int</span> arr[<span class="number">200010</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    LL ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        ans+=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    LL S=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        S+=arr[i]*(ans-arr[i]);</span><br><span class="line">        ans-=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;S&lt;&lt;endl;</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前缀和 </tag>
+            
+        </tags>
       
     </entry>
     
