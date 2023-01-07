@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>TankWar</title>
+      <link href="/2023/01/07/TankWar/"/>
+      <url>/2023/01/07/TankWar/</url>
+      
+        <content type="html"><![CDATA[<h3 id="视频展示"><a href="#视频展示" class="headerlink" title="视频展示"></a>视频展示</h3><iframe src="//player.bilibili.com/player.html?aid=649971654&bvid=BV1Qe4y137vf&cid=953990346&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=550 width=700> </iframe><h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="https://s1.ax1x.com/2023/01/07/pSE7Eod.png" alt=""></p><h3 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h3><p><a href="https://gitee.com/sheepFly03/tank-war">TankWar</a></p><h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><ul><li>myPanel作为一个线程每隔30ms完成一系列操作后 repaint一下，如果gameOver线程则退出<ul><li>在run中执行hitEnemy和hitHero方法，遍历所有子弹和坦克，调用hitTank方法，通过alive判断是否要从容器中删除对象。</li><li>hitTank方法，传入一个子弹，一个坦克，根据坦克的不同方向分别判断子弹是否击中，如果击中则相应alive设置为false。</li><li>在run中子弹生成敌方坦克，用一个变量记录时间间隔，还设置了一个变量记录己方发射间隔（30ms自增一次）</li><li>KeyPressed控制己方坦克，末尾调用repaint方法</li><li>paint方法：!gameOver则 drawMyInfo(g); drawHero(g); drawEnemyTank(g);drawBombs(g);  gameOver则showReplay(g); 关闭坦克、子弹线程; 重绘重新绘制子组件; 播放结束bgm</li></ul></li><li><p>每个敌方坦克作为线程，使坦克自动移动、发射，在MyPanel中用Vector储存敌方坦克对象</p><ul><li>敌方坦克碰撞判断：new每个enemy时 将储存所有enemy的Vector(myPanel中)通过EnemTank的set方法传入enemy对象的vector数组，判断时先沿当前坦克方向预处理一段距离，遍历所有坦克，如果发生位置重叠，则发生了碰撞</li><li>在敌方坦克线程中，通过选择语句根据坦克的direction作出不同方向的动作，如果在边界内并且没有发生碰撞则调用Tank中的4个move方法，并在不同的时机发射炮弹；通过循环和Thread.sleep方法可以阻止坦克瞬移，并沿当前方向移动一段距离。若到达边界或发生了碰撞需提前break，然后通过随机函数随机不同的方向。线程结束条件是Tank.alive == false。</li></ul></li><li><p>每个坦克有自己的bullet Vector，每个bullet对象是一个线程，线程中每休眠30ms则根据bullet初始化的方向移动一段距离，直到子弹到达边界或bullet.alive == false线程结束, false的可能性有子弹到达边界、子弹射到坦克。</p></li><li>Tank.Shot方法传入一个子弹Vector容器，负责初始化bullet，向容器中添加子弹，然后开启该子弹的线程。在敌方坦克线程和MyPanel监听到空格中调用</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> 项目练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 坦克大战 </tag>
+            
+            <tag> 多线程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ACWing寒假09 4655.重新排序</title>
       <link href="/2023/01/05/%5BACWing%E5%AF%92%E5%81%8709%5D%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/"/>
       <url>/2023/01/05/%5BACWing%E5%AF%92%E5%81%8709%5D%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/</url>
@@ -22,9 +51,9 @@
             
             <tag> 前缀和 </tag>
             
-            <tag> 差分 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> 差分 </tag>
             
         </tags>
       
