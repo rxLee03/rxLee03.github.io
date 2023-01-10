@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>L1-006 连续因子 L1-009 N个数求和</title>
+      <link href="/2023/01/10/%5Bpta%E5%A4%A9%E6%A2%AF%E8%B5%9B01%5D/"/>
+      <url>/2023/01/10/%5Bpta%E5%A4%A9%E6%A2%AF%E8%B5%9B01%5D/</url>
+      
+        <content type="html"><![CDATA[<h2 id="L1-006-连续因子"><a href="#L1-006-连续因子" class="headerlink" title="L1-006 连续因子"></a>L1-006 连续因子</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>一个正整数 N 的因子中可能存在若干连续的数字。例如 630 可以分解为 3×5×6×7，其中 5、6、7 就是 3 个连续的数字。给定任一正整数 N，要求编写程序求出最长连续因子的个数，并输出最小的连续因子序列。</p><p><strong>输入格式：</strong><br>输入在一行中给出一个正整数 $N（1&lt;N&lt;2^{31})$</p><p><strong>输出格式：</strong><br>首先在第 1 行输出最长连续因子的个数；然后在第 2 行中按 因子1 <em> 因子2 </em> …… * 因子k 的格式输出最小的连续因子序列，其中因子按递增顺序输出，1 不算在内。</p><p><strong>输入样例：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">630</span><br></pre></td></tr></table></figure><br><strong>输出样例：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5*6*7</span><br></pre></td></tr></table></figure></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>注意素数特殊情况</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> startNum = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//枚举连续数的起始点</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> temp = n;</span><br><span class="line">        <span class="type">int</span> j = i;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (temp % j == <span class="number">0</span>)&#123;</span><br><span class="line">            temp /= j;</span><br><span class="line">            j++;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count &gt; ans)&#123;</span><br><span class="line">            ans = count;</span><br><span class="line">            startNum = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//素数</span></span><br><span class="line">    <span class="keyword">if</span> (ans == <span class="number">0</span>)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ans; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i != ans <span class="number">-1</span>)</span><br><span class="line">                cout &lt;&lt; startNum + i &lt;&lt; <span class="string">&quot;*&quot;</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                cout &lt;&lt; startNum + i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h2 id="L1-009-N个数求和"><a href="#L1-009-N个数求和" class="headerlink" title="L1-009 N个数求和"></a>L1-009 N个数求和</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>本题的要求很简单，就是求N个数字的和。麻烦的是，这些数字是以有理数分子/分母的形式给出的，你输出的和也必须是有理数的形式。</p><p><strong>输入格式：</strong><br>输入第一行给出一个正整数N（≤100）。随后一行按格式a1/b1 a2/b2 …给出N个有理数。题目保证所有分子和分母都在长整型范围内。另外，负数的符号一定出现在分子前面。</p><p><strong>输出格式：</strong><br>输出上述数字和的最简形式 —— 即将结果写成整数部分 分数部分，其中分数部分写成分子/分母，要求分子小于分母，且它们没有公因子。如果结果的整数部分为0，则只输出分数部分。</p><p><strong>输入样例1：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2/5 4/15 1/30 -2/60 8/3</span><br></pre></td></tr></table></figure><br><strong>输出样例1：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 1/3</span><br></pre></td></tr></table></figure><br><strong>输入样例2：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">4/3 2/3</span><br></pre></td></tr></table></figure><br><strong>输出样例2：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure><br><strong>输入样例3：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1/3 -1/6 1/8</span><br></pre></td></tr></table></figure><br><strong>输出样例3：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7/24</span><br></pre></td></tr></table></figure></p><h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p><strong>输出时注意分子为0，整数，假分数，真分数</strong><br><strong>每加完一个分数，分子分母要约分，防止爆数据范围</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line"><span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line"><span class="type">int</span> c = a % b;</span><br><span class="line">a = b;</span><br><span class="line">b = c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> up = <span class="number">0</span>, down = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> n, a, b;</span><br><span class="line"><span class="type">char</span> c;</span><br><span class="line">cin &gt;&gt; n;</span><br><span class="line"><span class="keyword">while</span> (n--) &#123;</span><br><span class="line">cin &gt;&gt; a &gt;&gt; c &gt;&gt; b;</span><br><span class="line">up = b * up + a * down;</span><br><span class="line">down = down * b;</span><br><span class="line"><span class="type">int</span> d = <span class="built_in">gcd</span>(<span class="built_in">abs</span>(up), <span class="built_in">abs</span>(down));</span><br><span class="line">up /= d;</span><br><span class="line">down /= d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (up == <span class="number">0</span>)</span><br><span class="line">cout &lt;&lt; <span class="number">0</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (up % down == <span class="number">0</span>)</span><br><span class="line">cout &lt;&lt; up / down;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line"><span class="type">int</span> z = up / down;</span><br><span class="line"><span class="keyword">if</span> (z)&#123;</span><br><span class="line">cout &lt;&lt; z &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; up - z * down &lt;&lt; <span class="string">&quot;/&quot;</span> &lt;&lt; down;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法练习, GPLT 一阶题目集 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TankWar</title>
       <link href="/2023/01/07/TankWar/"/>
       <url>/2023/01/07/TankWar/</url>
@@ -42,7 +61,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -71,7 +90,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -96,7 +115,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -121,7 +140,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -148,7 +167,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -173,7 +192,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -192,7 +211,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -211,7 +230,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -236,7 +255,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
@@ -284,7 +303,7 @@
       
       <categories>
           
-          <category> 算法练习 </category>
+          <category> 算法练习, ACWing </category>
           
       </categories>
       
