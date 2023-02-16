@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>关于 String s = &quot;Hello&quot; 和 String s = new String(&quot;Hello&quot;)</title>
+      <link href="/2023/02/16/Java%E5%A4%8D%E4%B9%A0string%E5%92%8CnewString/"/>
+      <url>/2023/02/16/Java%E5%A4%8D%E4%B9%A0string%E5%92%8CnewString/</url>
+      
+        <content type="html"><![CDATA[<p>Java为了避免产生大量的String对象，设计了一个字符串常量池。<br>工作原理是这样的，创建一个字符串时，JVM首先为检查字符串常量池中是否有值相等的字符串，<br>如果有，则不再创建，直接返回该字符串的引用地址，<br>若没有，则创建，然后放到字符串常量池中，并返回新创建的字符串的引用地址。</p><p><a href="https://imgse.com/i/pSbekUU"><img src="https://s1.ax1x.com/2023/02/16/pSbekUU.png" alt="pSbekUU.png"></a></p><p><code>String s = new String(&quot;Hello&quot;);</code><br><strong>创建两个对象，或者创建一个对象：</strong><br>JVM首先是在字符串常量池中找”Hello”字符串，如果没有创建字符串常量，然后放到常量池中，若已存在，则不需要创建；当遇到 new 时，还会在内存（在堆里面）上创建一个新的String对象，存储”Hello”，并将内存上的String对象引用地址返回</p><p><code>String s2 = &quot;Hello&quot;</code><br><strong>创建一个对象，或者不创建对象：</strong><br>String s2 直接赋值, 在常量池里找, 有就直接赋值, 把”hello”的地址给了s2,<br>String s2指向了常量池里的”hello”;<br>反之没有则创建，然后放到字符串常量池中</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringTest</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">String s1=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">String s2=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">String s3=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;s1和s2 引用地址是否相同：&quot;</span>+(s1 == s2));</span><br><span class="line">System.out.println(<span class="string">&quot;s1和s2 值是否相同：&quot;</span>+s1.equals(s2));</span><br><span class="line">System.out.println(<span class="string">&quot;s1和s3 引用地址是否相同：&quot;</span>+(s1 == s3));</span><br><span class="line">System.out.println(<span class="string">&quot;s1和s3 值是否相同：&quot;</span>+s1.equals(s3));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s1和s2 引用地址是否相同：true</span><br><span class="line">s1和s2 值是否相同：true</span><br><span class="line">s1和s3 引用地址是否相同：false</span><br><span class="line">s1和s3 值是否相同：true</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span>&#123;</span><br><span class="line">      String s1=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">      String s2=<span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">      String s3=<span class="string">&quot;Hello&quot;</span>;    </span><br><span class="line">      System.out.println(s1==s2);</span><br><span class="line">      System.out.println(s1.equals(s2));</span><br><span class="line"></span><br><span class="line">      System.out.println(s2==s3);</span><br><span class="line">      System.out.println(s2.equals(s3));</span><br><span class="line"> </span><br><span class="line">      String s4=s1;</span><br><span class="line">      System.out.println(s1==s4);</span><br><span class="line">      System.out.println(s1.equals(s4));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">false</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">true</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ACWing 3956. 截断数组</title>
+      <link href="/2023/02/13/AcWing3956%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/"/>
+      <url>/2023/02/13/AcWing3956%E6%88%AA%E6%96%AD%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">难度：中等</span><br><span class="line">时/空限制：1s / 256MB</span><br><span class="line">总通过数：4585</span><br><span class="line">总尝试数：20229</span><br><span class="line">来源：AcWing,第16场周赛</span><br><span class="line">算法标签:</span><br><span class="line">枚举 前缀和</span><br></pre></td></tr></table></figure><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个长度为 n 的数组 a1,a2,…,an。</p><p>现在，要将该数组从中间截断，得到三个非空子数组。</p><p>要求，三个子数组内各元素之和都相等。</p><p>请问，共有多少种不同的截断方法？</p><p><strong>输入格式</strong><br>第一行包含整数 n。<br>第二行包含 n 个整数 a1,a2,…,an。</p><p><strong>输出格式</strong><br>输出一个整数，表示截断方法数量。</p><p><strong>数据范围</strong><br>前六个测试点满足 $1≤n≤10$<br>所有测试点满足 $1≤n≤10^5，−10000≤a_i≤10000。$</p><p><strong>输入样例1：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 2 3 3</span><br></pre></td></tr></table></figure><br><strong>输出样例1：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure><br><strong>输入样例2：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure><br><strong>输出样例2：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure><br><strong>输入样例3：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure><br><strong>输出样例3：</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure></p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>既然分为三个数组，且元素和相等</p><p>那么每个数组的元素和为原数组的<strong>1/3</strong></p><p>若除不尽或<code>n &lt; 3</code>则答案为0</p><p>sum[]为前缀和, averge=原数组总和/3<br>我们只需要寻找一个位置 <code>sum[i] == averge*2</code></p><p>此时<code>ans += count(sum[1] ~ sum[i-1] == averge)</code>即可</p><p>即第i位 满足2*averge, 只需要加上能使前i位的数组 分为 两个值为averge的位置 的数量即可(sum[]==ave)</p><p>注意 前缀和、ans、count开long long<br><code>if (sum[i] == ave*2) ans += count;</code><br><code>if (sum[i] == ave) count++;</code><br>顺序不可变 例：3-&gt; 0 0 0 </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">100005</span>];</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> sum[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        sum[i] = a[i] + sum[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sum[n] % <span class="number">3</span> || n &lt; <span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> ave = sum[n] / <span class="number">3</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> count = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (sum[i] == ave*<span class="number">2</span>)</span><br><span class="line">            ans += count;</span><br><span class="line">        <span class="keyword">if</span> (sum[i] == ave)</span><br><span class="line">            count++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法练习 </category>
+          
+          <category> ACWing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前缀和 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于抽象类和接口</title>
       <link href="/2023/02/06/Java%E5%A4%8D%E4%B9%A0%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3/"/>
       <url>/2023/02/06/Java%E5%A4%8D%E4%B9%A0%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3/</url>
@@ -13,7 +65,7 @@
       
       <categories>
           
-          <category> 笔记 </category>
+          <category> Java笔记 </category>
           
       </categories>
       
@@ -38,7 +90,7 @@
       
       <categories>
           
-          <category> 笔记 </category>
+          <category> Java笔记 </category>
           
       </categories>
       
@@ -63,7 +115,7 @@
       
       <categories>
           
-          <category> 笔记 </category>
+          <category> Java笔记 </category>
           
       </categories>
       
