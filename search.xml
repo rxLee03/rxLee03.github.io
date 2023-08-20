@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>简单的人事管理系统pms</title>
+      <link href="/2023/07/10/pms/"/>
+      <url>/2023/07/10/pms/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简单的人事管理系统"><a href="#简单的人事管理系统" class="headerlink" title="简单的人事管理系统"></a>简单的人事管理系统</h2><ul><li>2023年7月小学期</li><li>项目地址：<a href="https://gitee.com/sheepFly03/pms">https://gitee.com/sheepFly03/pms</a></li><li>使用技术：<ul><li>界面使用JavaSwing及beautyeye_lnf美化包</li><li>数据库mysql</li><li>jdbc</li></ul></li></ul><p><img src="https://s1.ax1x.com/2023/08/20/pP8G1PJ.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8G82R.jpg" alt=""></p><h3 id="基本信息管理"><a href="#基本信息管理" class="headerlink" title="基本信息管理"></a>基本信息管理</h3><h4 id="增删改查人员信息"><a href="#增删改查人员信息" class="headerlink" title="增删改查人员信息"></a>增删改查人员信息</h4><p><img src="https://s1.ax1x.com/2023/08/20/pP8GYKx.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8GBPH.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8GaVO.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8GNqK.jpg" alt=""></p><h4 id="部门管理"><a href="#部门管理" class="headerlink" title="部门管理"></a>部门管理</h4><p><img src="https://s1.ax1x.com/2023/08/20/pP8GwIe.jpg" alt=""></p><h3 id="人员调动"><a href="#人员调动" class="headerlink" title="人员调动"></a>人员调动</h3><p><img src="https://s1.ax1x.com/2023/08/20/pP8GDGd.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8h4DP.jpg" alt=""></p><h3 id="人员考核管理"><a href="#人员考核管理" class="headerlink" title="人员考核管理"></a>人员考核管理</h3><p><img src="https://s1.ax1x.com/2023/08/20/pP8hTUS.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8h5Hf.jpg" alt=""></p><h3 id="薪资管理"><a href="#薪资管理" class="headerlink" title="薪资管理"></a>薪资管理</h3><p><img src="https://s1.ax1x.com/2023/08/20/pP8h74g.jpg" alt=""><br><img src="https://s1.ax1x.com/2023/08/20/pP8hoE8.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> javaSwing </tag>
+            
+            <tag> 管理系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2018蓝桥杯C/C++ B组 国赛</title>
       <link href="/2023/06/07/%E8%93%9D%E6%A1%A5%E6%9D%AF2018%E5%9B%BD%E8%B5%9B/"/>
       <url>/2023/06/07/%E8%93%9D%E6%A1%A5%E6%9D%AF2018%E5%9B%BD%E8%B5%9B/</url>
@@ -884,9 +911,9 @@
             
             <tag> 前缀和 </tag>
             
-            <tag> 差分 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> 差分 </tag>
             
         </tags>
       
