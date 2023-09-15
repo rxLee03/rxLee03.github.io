@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>request.getSession().getAttribute(&quot;xxx&quot;)；获取值为空的问题</title>
+      <link href="/2023/09/15/DormMS%E9%97%AE%E9%A2%981%E7%99%BB%E5%BD%95session/"/>
+      <url>/2023/09/15/DormMS%E9%97%AE%E9%A2%981%E7%99%BB%E5%BD%95session/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在登录的时候、储存用户的信息 request.getSession().setAttribute(“user”, user);登录成功后把用户信息存入SESSION，之后校验当前用户是否登录时通过request.getSession().getAttribute获取时始终是个空。</p><h3 id="原因分析："><a href="#原因分析：" class="headerlink" title="原因分析："></a>原因分析：</h3><p>跨域问题、我这里采用的是前后端分离技术。没有携带请求凭证（cookie、HTTP认证及客户端SSL证明）造成request.getSession()获取的是不同的sessionId。</p><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol><li><p>后端配置<br><code>response.setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;http://127.0.0.1:8080&quot;);</code></p></li><li><p>前端配置<br><code>import axios from &#39;axios&#39;``</code>axios.defaults.withCredentials = true```</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目练习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bug </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tools | 代码生成器</title>
       <link href="/2023/09/12/tools-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/"/>
       <url>/2023/09/12/tools-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/</url>
@@ -352,9 +377,9 @@
             
             <tag> 进制转换 </tag>
             
-            <tag> 差分 </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> 差分 </tag>
             
             <tag> bfs </tag>
             
@@ -965,9 +990,9 @@
             
             <tag> 前缀和 </tag>
             
-            <tag> 差分 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> 差分 </tag>
             
         </tags>
       
