@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>关于通过内网穿透上线测试web项目</title>
+      <link href="/2023/10/17/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+      <url>/2023/10/17/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>开发course compass项目时想要上线进行测试项目，但是又不想部署到服务器上</p><p>查阅发现可以通过内网穿透将自己的主机当成服务器，穿透得到一个公网ip，非本机用户可以通过此ip访问项目，非常适合进行项目测试</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NATAPP：https://natapp.cn/</span><br><span class="line">樱花穿透：https://www.natfrp.com/?page=panel&amp;module=download#index</span><br></pre></td></tr></table></figure><p>  <strong>由于樱花穿透使用http(s)需要认证 起初前后端都是使用的TCP协议通道，通道开启自动HTTPS。启动项目后发现前端出现以下类似报错：</strong><br>  <img src="https://img-blog.csdnimg.cn/6e929e9328b84e82b7a96442f02c43a7.png" alt=""></p><p>  <a href="https://blog.csdn.net/weixin_39255905/article/details/127434626">CSDN：VUE nginx 部署 SSL https访问 WebSocket 问题</a></p><p> <strong>后端可正常处理请求</strong></p><p> <strong>大概是https协议搞的鬼，于是我把前端项目的隧道换成了NATAPP的免费http协议通道。</strong><br> <strong>再次启动，搞定</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tools </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Course Compass | 选课指南</title>
       <link href="/2023/10/15/CourseCompass%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97/"/>
       <url>/2023/10/15/CourseCompass%E9%80%89%E8%AF%BE%E6%8C%87%E5%8D%97/</url>
@@ -25,25 +44,6 @@
             <tag> mybaties-plus </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于通过内网穿透上线测试web项目</title>
-      <link href="/2023/10/15/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-      <url>/2023/10/15/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>开发course compass项目时想要上线进行测试项目，但是又不想部署到服务器上</p><p>查阅发现可以通过内网穿透将自己的主机当成服务器，穿透得到一个公网ip，非本机用户可以通过此ip访问项目，非常适合进行项目测试</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NATAPP：https://natapp.cn/</span><br><span class="line">樱花穿透：https://www.natfrp.com/?page=panel&amp;module=download#index</span><br></pre></td></tr></table></figure><p>  <strong>由于樱花穿透使用http(s)需要认证 起初前后端都是使用的TCP协议通道，通道开启自动HTTPS。启动项目后发现前端出现以下类似报错：</strong><br>  <img src="https://img-blog.csdnimg.cn/6e929e9328b84e82b7a96442f02c43a7.png" alt=""></p><p>  <a href="https://blog.csdn.net/weixin_39255905/article/details/127434626">CSDN：VUE nginx 部署 SSL https访问 WebSocket 问题</a></p><p> <strong>后端可正常处理请求</strong></p><p> <strong>大概是https协议搞的鬼，于是我把前端项目的隧道换成了NATAPP的免费http协议通道。</strong><br> <strong>再次启动，搞定</strong></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> tools </category>
-          
-      </categories>
-      
       
     </entry>
     
@@ -446,9 +446,9 @@
             
             <tag> 枚举 </tag>
             
-            <tag> dfs </tag>
-            
             <tag> 进制转换 </tag>
+            
+            <tag> dfs </tag>
             
             <tag> 差分 </tag>
             
@@ -1437,9 +1437,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> 进制转换 </tag>
+            
+            <tag> dfs </tag>
             
             <tag> 贪心 </tag>
             
