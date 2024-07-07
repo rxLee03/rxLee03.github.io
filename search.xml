@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Vue中 v-if和v-show状态值为数组某一项时渲染不更新问题</title>
+      <link href="/2024/07/07/%E6%8E%92%E9%94%99%E6%97%A5%E5%BF%97-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/"/>
+      <url>/2024/07/07/%E6%8E%92%E9%94%99%E6%97%A5%E5%BF%97-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题重现"><a href="#问题重现" class="headerlink" title="问题重现"></a>问题重现</h3><p>使用v-if条件渲染且状态值为一个布尔值数组时，数组值能通过<code>toggleText()</code>函数正常改变，但是视图确未重新渲染。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;!expandedItems[index] &amp;&amp; shouldDisplayToggle(item)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;wrap-text&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;toggleText(index)&quot;</span>&gt;</span></span><br><span class="line">              &#123;&#123; item.comment | truncate(maxLength) &#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color: #409eff; font-size: 14px&quot;</span>&gt;</span>展开<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-arrow-down&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">expandedItems</span>: [<span class="literal">false</span>,<span class="literal">false</span>...]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="title function_">toggleText</span>(<span class="params">index</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">expandedItems</span>[index] = !<span class="variable language_">this</span>.<span class="property">expandedItems</span>[index]</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>使用vue中的<code>$set</code>来设置值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">toggleText</span>(<span class="params">index</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.$set(<span class="variable language_">this</span>.<span class="property">expandedItems</span>,index,!<span class="variable language_">this</span>.<span class="property">expandedItems</span>[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 排错日志 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue实现文本过长时折叠显示与展开功能</title>
+      <link href="/2024/07/07/tools-vue%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD/"/>
+      <url>/2024/07/07/tools-vue%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;dataList&quot;</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 40px&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item, index) in dataList&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;!expandedItems[index] &amp;&amp; shouldDisplayToggle(item)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;wrap-text&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;toggleText(index)&quot;</span>&gt;</span></span><br><span class="line">              &#123;&#123; item.comment | truncate(maxLength) &#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color: #409eff; font-size: 14px&quot;</span>&gt;</span>展开<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-arrow-down&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-else</span> <span class="attr">class</span>=<span class="string">&quot;wrap-text&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;toggleText(index)&quot;</span>&gt;</span></span><br><span class="line">              &#123;&#123; item.comment &#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-if</span>=<span class="string">&quot;shouldDisplayToggle(item)&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: #409eff&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-arrow-up&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">expandedItems</span>: [<span class="literal">false</span>,<span class="literal">false</span>,...],</span><br><span class="line">        <span class="attr">maxLength</span>: <span class="number">70</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">filters</span>: &#123;</span><br><span class="line">      <span class="title function_">truncate</span>(<span class="params">text, length</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> text.<span class="property">length</span> &gt; length ? text.<span class="title function_">slice</span>(<span class="number">0</span>, length) : text;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">      <span class="title function_">toggleText</span>(<span class="params">index</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.$set(<span class="variable language_">this</span>.<span class="property">expandedItems</span>,index,!<span class="variable language_">this</span>.<span class="property">expandedItems</span>[index]);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">shouldDisplayToggle</span>(<span class="params">item</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> item &amp;&amp; item.<span class="property">comment</span> &amp;&amp; item.<span class="property">comment</span>.<span class="property">length</span> &gt; <span class="variable language_">this</span>.<span class="property">maxLength</span>;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代码片段 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>RedisTemplate设置过期时间的两种方式及区别</title>
       <link href="/2024/06/27/%E7%AC%94%E8%AE%B0-redistemplate%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/"/>
       <url>/2024/06/27/%E7%AC%94%E8%AE%B0-redistemplate%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
@@ -99,56 +149,6 @@
           
       </categories>
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Vue中 v-if和v-show状态值为数组某一项时渲染不更新问题</title>
-      <link href="/2024/06/07/%E6%8E%92%E9%94%99%E6%97%A5%E5%BF%97-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/"/>
-      <url>/2024/06/07/%E6%8E%92%E9%94%99%E6%97%A5%E5%BF%97-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/</url>
-      
-        <content type="html"><![CDATA[<h3 id="问题重现"><a href="#问题重现" class="headerlink" title="问题重现"></a>问题重现</h3><p>使用v-if条件渲染且状态值为一个布尔值数组时，数组值能通过<code>toggleText()</code>函数正常改变，但是视图确未重新渲染。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;!expandedItems[index] &amp;&amp; shouldDisplayToggle(item)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;wrap-text&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;toggleText(index)&quot;</span>&gt;</span></span><br><span class="line">              &#123;&#123; item.comment | truncate(maxLength) &#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color: #409eff; font-size: 14px&quot;</span>&gt;</span>展开<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-arrow-down&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">expandedItems</span>: [<span class="literal">false</span>,<span class="literal">false</span>...]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="title function_">toggleText</span>(<span class="params">index</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">expandedItems</span>[index] = !<span class="variable language_">this</span>.<span class="property">expandedItems</span>[index]</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>使用vue中的<code>$set</code>来设置值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">toggleText</span>(<span class="params">index</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.$set(<span class="variable language_">this</span>.<span class="property">expandedItems</span>,index,!<span class="variable language_">this</span>.<span class="property">expandedItems</span>[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 排错日志 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> vue </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>vue实现文本过长时折叠显示与展开功能</title>
-      <link href="/2024/06/07/tools-vue%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD/"/>
-      <url>/2024/06/07/tools-vue%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;dataList&quot;</span> <span class="attr">style</span>=<span class="string">&quot;margin-top: 40px&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item, index) in dataList&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;!expandedItems[index] &amp;&amp; shouldDisplayToggle(item)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;wrap-text&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;toggleText(index)&quot;</span>&gt;</span></span><br><span class="line">              &#123;&#123; item.comment | truncate(maxLength) &#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color: #409eff; font-size: 14px&quot;</span>&gt;</span>展开<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-arrow-down&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-else</span> <span class="attr">class</span>=<span class="string">&quot;wrap-text&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;toggleText(index)&quot;</span>&gt;</span></span><br><span class="line">              &#123;&#123; item.comment &#125;&#125;</span><br><span class="line">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-if</span>=<span class="string">&quot;shouldDisplayToggle(item)&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: #409eff&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-arrow-up&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">expandedItems</span>: [<span class="literal">false</span>,<span class="literal">false</span>,...],</span><br><span class="line">        <span class="attr">maxLength</span>: <span class="number">70</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">filters</span>: &#123;</span><br><span class="line">      <span class="title function_">truncate</span>(<span class="params">text, length</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> text.<span class="property">length</span> &gt; length ? text.<span class="title function_">slice</span>(<span class="number">0</span>, length) : text;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">      <span class="title function_">toggleText</span>(<span class="params">index</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.$set(<span class="variable language_">this</span>.<span class="property">expandedItems</span>,index,!<span class="variable language_">this</span>.<span class="property">expandedItems</span>[index]);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">shouldDisplayToggle</span>(<span class="params">item</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> item &amp;&amp; item.<span class="property">comment</span> &amp;&amp; item.<span class="property">comment</span>.<span class="property">length</span> &gt; <span class="variable language_">this</span>.<span class="property">maxLength</span>;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 代码片段 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> vue </tag>
-            
-        </tags>
       
     </entry>
     
@@ -672,7 +672,7 @@
       
       <categories>
           
-          <category> tools </category>
+          <category> 代码片段 </category>
           
       </categories>
       
@@ -697,9 +697,7 @@
       
       <categories>
           
-          <category> 项目练习 </category>
-          
-          <category> tools </category>
+          <category> 代码片段 </category>
           
       </categories>
       
@@ -724,7 +722,7 @@
       
       <categories>
           
-          <category> tools </category>
+          <category> 代码片段 </category>
           
       </categories>
       
@@ -1826,9 +1824,9 @@
             
             <tag> 前缀和 </tag>
             
-            <tag> 贪心 </tag>
-            
             <tag> 差分 </tag>
+            
+            <tag> 贪心 </tag>
             
         </tags>
       
@@ -2031,9 +2029,9 @@
       
       <categories>
           
-          <category> 项目练习 </category>
+          <category> 算法练习 </category>
           
-          <category> 数据结构 </category>
+          <category> 项目练习 </category>
           
       </categories>
       
@@ -2255,7 +2253,7 @@
       
       <categories>
           
-          <category> 数据结构 </category>
+          <category> 算法练习 </category>
           
       </categories>
       
@@ -2282,7 +2280,7 @@
       
       <categories>
           
-          <category> 数据结构 </category>
+          <category> 算法练习 </category>
           
       </categories>
       
